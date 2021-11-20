@@ -1,0 +1,30 @@
+s = '32457789292624947020927163823084209499624487394720834340'
+# 1 2 3 4 12 23 34 123 234 
+# 1 2 3 4  2  6 12  6   24 - Product - Not colorful
+
+def iscolorful(s):
+    # Empty Dict
+    ds = {}
+    # Empty List
+    temp = []
+    # Boolean for result
+    bool_ = True
+    
+    for i in range(len(s)):
+        for j in range(i, len(s)):
+            temp.append(s[i:j + 1])
+
+    for i in temp:
+        m = 1
+        num = int(i)
+        while num:
+            m = m*(num%10)
+            num = num//10
+        if m in ds:
+            bool_ = False
+            return bool_
+        ds[m] = i
+    return bool_
+        
+isColorful = iscolorful(s)        
+print("Number " + s + " is colorful ???? " + str(isColorful))    
